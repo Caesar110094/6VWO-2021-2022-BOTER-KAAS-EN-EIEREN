@@ -1,6 +1,6 @@
 import random
  
-from bke import MLAgent, is_winner, opponent, RandomAgent, train_and_plot
+from bke import *
  
  
 class MyAgent(MLAgent):
@@ -16,12 +16,14 @@ class MyAgent(MLAgent):
     
 random.seed(1)
  
-my_agent = MyAgent()
+my_agent = MyAgent(alpha=0.8, epsilon=0.2)
 random_agent = RandomAgent()
  
 train_and_plot(
     agent=my_agent,
     validation_agent=random_agent,
-    iterations=50,
+    iterations=500,
     trainings=100,
     validations=1000)
+
+save(my_agent, 'MyAgent550000')
